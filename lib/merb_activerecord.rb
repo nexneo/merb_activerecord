@@ -1,11 +1,10 @@
-if defined?(Merb::Plugins)  
-  
-  dependency "activerecord"
-  
+if defined?(Merb::Plugins)
+  require 'active_record'
+
   require File.join(File.dirname(__FILE__) / "merb" / "orms" / "active_record" / "cleanup" )
   require File.join(File.dirname(__FILE__) / "merb" / "orms" / "active_record" / "connection")
   Merb::Plugins.add_rakefiles(File.join(File.dirname(__FILE__) / "active_record" / "merbtasks"))
-  
+
   class Merb::Orms::ActiveRecord::Connect < Merb::BootLoader
     after BeforeAppLoads
 
@@ -19,23 +18,20 @@ if defined?(Merb::Plugins)
       # can be used as the default resource key
       Merb::Router.root_behavior = Merb::Router.root_behavior.identify(ActiveRecord::Base => :id)
     end
-
   end
-  
+
   class Merb::Orms::ActiveRecord::DisconnectBeforeFork < Merb::BootLoader
     after AfterAppLoads
-    
-    def self.run      
+
+    def self.run
       Merb.logger.debug "Disconnecting database connection before forking."
       ::ActiveRecord::Base.clear_active_connections!
     end
-  end  
-  
-  
+  end
+
   generators = File.join(File.dirname(__FILE__), 'generators')
   Merb.add_generators generators / :migration
   Merb.add_generators generators / :model
   Merb.add_generators generators / :resource_controller
   Merb.add_generators generators / :session_migration
-
 end
