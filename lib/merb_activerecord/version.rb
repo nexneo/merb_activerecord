@@ -1,5 +1,5 @@
 module Merb
   module ActiveRecord
-    VERSION = '1.1.0.pre'.freeze
+    VERSION = '1.2.0'
   end
 end
