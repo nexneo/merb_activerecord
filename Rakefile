@@ -24,7 +24,7 @@ begin
 
     # Runtime dependencies
     gemspec.add_dependency 'merb-core',    "~> 1.1.3"
-    gemspec.add_dependency 'activerecord', '= 3.0.7'
+    gemspec.add_dependency 'activerecord', '= 3.0.1'
 
     # Development dependencies
     gemspec.add_development_dependency 'rspec', '>= 1.2.9'
