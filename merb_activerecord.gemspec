@@ -23,8 +23,6 @@ Gem::Specification.new do |s|
     "README",
     "Rakefile",
     "TODO",
-    "lib/active_record/merbtasks.rb",
-    "lib/generators/migration.rb",
     "lib/generators/model.rb",
     "lib/generators/resource_controller.rb",
     "lib/generators/session_migration.rb",
